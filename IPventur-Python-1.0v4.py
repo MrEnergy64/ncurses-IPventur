@@ -64,7 +64,7 @@ else:
 try:
     h, w = screen.getmaxyx()
     
-    text = ("IPventur Python 1.0v3 by Norman Woeske")
+    text = ("IPventur Python 1.0v4 by Norman Woeske")
     text2 = datetime.datetime.now()
     datum = datetime.date.today()
     q1 = "Which v4 IP/range (/32 for single IP) would you like to scan? (for exit use \"q\" and ENTER)"
