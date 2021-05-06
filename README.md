@@ -1,5 +1,5 @@
 # IPventur-Python-Curses
-IPventur nmap frontend for Python3 and curses with nmap3
+IPventur nmap frontend for Python3 and curses with nmap3 module
 
 This is still beta v3 of IPventur-Python-1.0v3.
 
