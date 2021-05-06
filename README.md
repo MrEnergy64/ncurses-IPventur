@@ -23,7 +23,7 @@ or
 "sudo yum install nmap"
 
 
-start program (best as root) with: "python IPventur-Python-1.0v3.py"
+start program (best as root) with: "python IPventur-Python-1.0v4.py"
 
 Open Issues:
 
