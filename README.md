@@ -1,2 +1,36 @@
 # IPventur-Python-Curses
 IPventur nmap frontend for Python3 and curses with nmap3
+
+This is still beta v3 of IPventur-Python-1.0v3.
+
+Requirements:
+
+Python 3.8 or higher
+
+python3-nmap
+git clone https://github.com/wangoloj/python3-nmap.git
+pip3 install python3-nmap
+
+simplejson
+pip3 install simplejson
+
+for Windows 10 only
+pip3 install pywin32
+
+nmap
+sudo apt install nmap
+or
+sudo yum install nmap
+
+
+start program (best as root) with: "python IPventur-Python-1.0v3.py"
+
+Open Issues:
+
+1. check for correct IPv4 input format
+2. cursor key right not working
+3. nmap_os_detection for Windows 10 not working
+
+
+Note:
+goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
