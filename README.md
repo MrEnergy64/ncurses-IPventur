@@ -1,7 +1,7 @@
 # IPventur-Python-Curses
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is still beta v3 of IPventur-Python-1.0v3.
+This is still beta v4 of IPventur-Python-1.0v4.
 
 Requirements:
 
@@ -34,3 +34,13 @@ Open Issues:
 
 Note:
 goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
+
+Update v4 version:
+
+- added IP format check
+- added if nmap program exist
+
+Still missing:
+- ask after a complete scan for a new scan or leaving...
+- restart program after wrong entered a wrong IP
+
