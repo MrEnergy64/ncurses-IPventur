@@ -7,19 +7,23 @@ Requirements:
 
 Python 3.8 or higher
 
-python3-nmap
+python3-nmap:
+
 git clone https://github.com/wangoloj/python3-nmap.git
 "pip3 install python3-nmap"
 
-simplejson
+simplejson:
+
 "pip3 install simplejson"
 
-for Windows 10 only
+for Windows 10 only:
+
 "pip3 install pywin32"
 
-nmap
+nmap:
+
 "sudo apt install nmap"
-or
+or:
 "sudo yum install nmap"
 
 
