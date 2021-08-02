@@ -10,6 +10,7 @@ Python 3.8 or higher
 python3-nmap:
 
 git clone https://github.com/wangoloj/python3-nmap.git
+
 "pip3 install python3-nmap"
 
 simplejson:
