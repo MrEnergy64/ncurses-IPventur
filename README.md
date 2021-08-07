@@ -38,8 +38,8 @@ Update v5 version:
 - added IP format check
 - added if nmap program exist
 - restart program when IP address is wrong
-- redesign window
-- restructure oython code
+- redesign windows design
+- restructure python code
 
 Still missing:
 - ask after a complete scan for a new scan or leaving... (will be soon in v6)
