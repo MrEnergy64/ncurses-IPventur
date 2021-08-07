@@ -1,0 +1,5 @@
+simplejson
+demjson
+python3-nmap
+ipaddress
+datetime
