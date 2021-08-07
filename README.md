@@ -1,7 +1,7 @@
 # IPventur-Python-Curses
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v5 of ncurses-IPventur-10v5.py
+This is v5 of ncurses-IPventur-10v6.py
 
 Requirements:
 
@@ -44,5 +44,9 @@ Update v5 version:
 Still missing:
 - ask after a complete scan for a new scan or leaving... (will be soon in v6)
 
+Update v6 version:
 
+- added terminal window size check of 34 x 111, otherwise program will not starts
+- added restart menu after a completed scan
+- some minor design changes
 
