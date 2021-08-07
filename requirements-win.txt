@@ -1,0 +1,7 @@
+pypiwin32
+windows-curses
+demjson
+simplejson
+python3-nmap
+ipaddress
+datetime
