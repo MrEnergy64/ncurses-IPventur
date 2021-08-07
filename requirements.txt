@@ -1,5 +1,0 @@
-simplejson
-python3-nmap
-# for Windows 
-pywin32
-# also nmap is needed via sudo apt install nmap (or yum install nmap)
