@@ -1,7 +1,7 @@
 # IPventur-Python-Curses
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v7 of ncurses-IPventur-10v7.py
+This is v8 of ncurses-IPventur-10v8.py
 
 Requirements:
 
@@ -28,7 +28,7 @@ or:
 "sudo yum install nmap"
 
 
-start program (best as root) with: "python ncurses-IPventur-10v7.py"
+start program (best as root) with: "python ncurses-IPventur-10v8.py"
 
 Note:
 goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
@@ -55,4 +55,10 @@ Update v7 version:
 - resolved json format saving bug
 - added actual screen size, to windows size error message
 - minor design change
--
+
+Update v8 version:
+
+- added notes that some nmap scan options are not valid for Windows OS yet
+- added some new menu points
+- changed some minor style issues
+- 
