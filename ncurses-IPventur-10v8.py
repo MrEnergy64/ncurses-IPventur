@@ -290,6 +290,7 @@ def scannen(technic,ip):
         screen.attron(curses.color_pair(3))
         screen.addstr(6, 3, f'Scan-Technic: nmap.nmap_ping_scan ({ip})')
         screen.attroff(curses.color_pair(3))
+        screen.addstr(8, 3, text2, curses.A_REVERSE)
         results = nmapscan.nmap_ping_scan(f'{ip}')
         screen.addstr(10, 3, 'DONE!', curses.A_REVERSE)
         output = str(results)
