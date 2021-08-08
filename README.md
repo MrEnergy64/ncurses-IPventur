@@ -1,4 +1,4 @@
-# IPventur-Python-Curses
+# ncurses-IPventur 1.0v8
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
 This is v8 of ncurses-IPventur-10v8.py
@@ -61,4 +61,5 @@ Update v8 version:
 - added notes that some nmap scan options are not valid for Windows OS yet
 - added some new menu points
 - changed some minor style issues
-- 
+
+Note: new features will be added son! stay tune.
