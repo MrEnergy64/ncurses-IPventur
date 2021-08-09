@@ -1,4 +1,4 @@
-    # coding: utf-8
+# coding: utf-8
 #!/usr/bin/python3
 # IPventur-Python-1.0v8
 # recommend root rights, need nmap
