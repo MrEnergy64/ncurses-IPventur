@@ -1,7 +1,7 @@
-# ncurses-IPventur 1.0v8
+# ncurses-IPventur.py
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v8 of ncurses-IPventur-10v8.py
+This is v8 of ncurses-IPventur.py
 
 Requirements:
 
@@ -28,7 +28,7 @@ or:
 "sudo yum install nmap"
 
 
-start program (best as root) with: "python ncurses-IPventur-10v8.py"
+start program (best as root) with: "python ncurses-IPventur.py"
 
 Note:
 goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
