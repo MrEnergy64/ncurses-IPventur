@@ -13,13 +13,8 @@ python3-nmap:
 $ git clone https://github.com/wangoloj/python3-nmap.git
 
 $ pip3 install -r requirements.txt
-
-# Install nmap online
-
-$ apt-get install nmap
-
-# That's all is needed to get started
 -----------------------------------------------------------
+
 ncurses-IPventur.py:
 
 for Windows:
@@ -34,9 +29,14 @@ for Linux:
 
 nmap:
 
+Linux:
+
 "sudo apt install nmap"
 or:
 "sudo yum install nmap"
+
+Windows:
+https://nmap.org/download.html
 
 
 start program (best as root) with: "python ncurses-IPventur.py"
