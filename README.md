@@ -7,9 +7,20 @@ Requirements:
 
 Python 3.8 or higher
 
+-----------------------------------------------------------
 python3-nmap:
 
-git clone https://github.com/wangoloj/python3-nmap.git
+$ git clone https://github.com/wangoloj/python3-nmap.git
+
+$ pip3 install -r requirements.txt
+
+# Install nmap online
+
+$ apt-get install nmap
+
+# That's all is needed to get started
+-----------------------------------------------------------
+ncurses-IPventur.py:
 
 for Windows:
 
