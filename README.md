@@ -1,7 +1,7 @@
 # ncurses-IPventur.py
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v8 of ncurses-IPventur.py
+This is v1.1 of ncurses-IPventur.py
 
 Requirements:
 
