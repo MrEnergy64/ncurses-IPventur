@@ -1,12 +1,12 @@
 # coding: utf-8
 #!/usr/bin/python3
-# IPventur-Python-1.0v8
+# IPventur-Python-1.1
 # recommend root rights, need nmap
-# updated: 08.08.2021 Norman Woeske
-# Version: beta v8
+# updated: 10.08.2021 Norman Woeske
+# Version: 1.1
 # for Windows needs pypiwin32, windows-curses, demjson, simplejson, python3-nmap
 # for Linux needs simplejson, demjson, python3-nmap,
-
+IPversion = "1.1"
 
 
 import curses
@@ -33,7 +33,6 @@ cmd = ''
 NmapOK = ''
 ScreenDel = ''
 os_version = ''
-output = ''
 output = ''
 splitoutput = ''
 ip = ''
@@ -81,6 +80,9 @@ def exist_NMAP(cmd):
             print("""
             ! No nmap exist! Please install nmap first. Leaving program.... !
             """)
+            fix = "stty sane"
+            curses.endwin()
+            os.system(fix)
             sys.exit()
     if cmd=="which":
         Nmaplinux = subprocess.call([cmd, "nmap"], stdout=subprocess.PIPE)
@@ -92,16 +94,18 @@ def exist_NMAP(cmd):
             print("""
             ! No nmap exist! Please install nmap first. Leaving program.... !
             """)
+            fix = "stty sane"
             curses.endwin()
+            os.system(fix)
             sys.exit()
-
+            
 def fenster(os_version,NmapOK,User):
-    text = ("IPventur Python 1.0v8 by Norman Woeske")
+    text = (f"IPventur Python {IPversion} by Norman Woeske")
     text2 = datetime.datetime.now()
     zeit = text2.strftime("%Y-%m-%d %H:%M:%S")
     h, w = screen.getmaxyx()
     if h <= 32 or w <= 110:
-        warning = f'\n!!! Sorry, but your windows terminal size is not h33 x w111 (actual: h{h} x w{w}). Program has been stopped !!! \n'  
+        warning = f'\n!!! Sorry, but your windows terminal size is not h33 x w111 (actual: h{h} x w{w}). Program has been stopped !!! \n'
         sys.exit(warning)
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
@@ -114,11 +118,12 @@ def fenster(os_version,NmapOK,User):
     screen.border(0)
     screen.addstr(y, 2, NmapOK)
     screen.addstr(y, x+3, text)
-    screen.addstr(y, x2+40, zeit)
-    screen.addstr(y+1, x2+40, f'OS is: {os_version}', curses.A_REVERSE)
+    screen.addstr(y+1, x+4, f"Your Screensize is: w{w} x h{h}", curses.A_REVERSE)
+    screen.addstr(y, w-25, zeit)
+    screen.addstr(y+1, w-25, f'OS is: {os_version}', curses.A_REVERSE)
     screen.addstr(y+1, 2, f'User is: {User}',curses.A_REVERSE)
     screen.attroff(curses.color_pair(1))
-    
+
 
 def whichIP(ScreenDel):
     ip = ''
@@ -149,6 +154,8 @@ def whichIP(ScreenDel):
             screen.addstr(10, 3, 'Leaving the program...... ')
             time.sleep(2)
             curses.endwin()
+            fix = "stty sane"
+            os.system(fix)
             sys.exit()
         elif char == '\n':
             try:
@@ -162,14 +169,14 @@ def whichIP(ScreenDel):
                 screen.addstr(10, 3, 'No valid IP adress(es) entered! Restarting Program ....', curses.A_REVERSE)
                 time.sleep(2)
                 main()
-                
 
-def scanOption(ip, os_version):
+
+def scanOption(ip, os_version, User):
     technic = ''
     curses.init_pair(1, curses.COLOR_WHITE, curses.COLOR_BLUE)
     curses.init_pair(2, curses.COLOR_GREEN, curses.COLOR_BLACK)
     q2 = f"Which nmap scan techniques would you like do with IP: {ip} ?"
-    box2 = curses.newwin(3, 4, 23, 3)
+    box2 = curses.newwin(3, 4, 24, 3)
     box2.immedok(True)
     box2.box()
     while True:
@@ -179,21 +186,22 @@ def scanOption(ip, os_version):
         screen.attron(curses.color_pair(1))
         screen.addstr(8, 3, "for non root/admin rights:")
         screen.attroff(curses.color_pair(1))
-        screen.addstr(9, 3, " 1. nmap_ping_scan \t2. nmap_list_scan \t3. nmap_dns_brute_script \t4. scan_top_ports")
+        screen.addstr(9, 3, " (1) nmap_ping_scan \t\t(2) nmap_tcp_scan \t(3) nmap_udp_scan")
+        screen.addstr(10, 3, " (4) scan_top_ports \t\t(5) nmap_portscan_only")
         screen.attron(curses.color_pair(1))
-        screen.addstr(11, 3, "for root/admin rights:")
+        screen.addstr(12, 3, "for root/admin rights:")
         screen.attroff(curses.color_pair(1))
-        screen.addstr(12, 3, " 5. nmap_detect_firewall \t\t 6. nmap_os_detection (not yet for Windows)")
-        screen.addstr(13, 3, " 7. nmap_portscan_only \t\t 8. nmap_stealth_scan (not yet for Windows)")
-        screen.addstr(14, 3, " 9. nmap_subnet_scan (long scan) \t10. nmap_version_detection")
+        screen.addstr(13, 3, " (6) nmap_detect_firewall \t\t(7) nmap_os_detection (not yet for Windows)")
+        screen.addstr(14, 3, " (8) nmap_stealth_scan (not yet for Windows)")
+        screen.addstr(15, 3, " (9) nmap_subnet_scan (long scan) \t(10) nmap_version_detection")
         screen.attron(curses.color_pair(2))
         screen.attron(curses.color_pair(1))
-        screen.addstr(16, 3, "some utils and infos:")
+        screen.addstr(17, 3, "some utils and infos:")
         screen.attroff(curses.color_pair(1))
-        screen.addstr(17, 3, "11. nmap3 version \t\t12. nmap3 author")
-        screen.addstr(18, 3, "13. nmap3 last modified \t14. <will be soon>")
-        screen.addstr(21, 3, "Please choose scan technic number? (for exit use \"q\" and ENTER) ")
-        screen.addstr(24, 4, technic)
+        screen.addstr(18, 3, " (11) nmap3 version \t\t(12) nmap3 author")
+        screen.addstr(19, 3, " (13) nmap3 last modified \t(14) <will be soon>")
+        screen.addstr(22, 3, "Please choose scan technic number? (for exit use \"q\" and ENTER) ")
+        screen.addstr(25, 4, technic)
         screen.attroff(curses.color_pair(2))
 
         char = screen.get_wch()
@@ -203,81 +211,118 @@ def scanOption(ip, os_version):
         elif char == curses.KEY_BACKSPACE or char == '\x08' or char == curses.KEY_LEFT:
             technic = technic[:-1]
         elif technic == "q" or technic == "Q":
-            screen.addstr(26, 3, 'You would like to leave the program, bye....')
+            screen.addstr(30, 3, 'You would like to leave the program, bye....')
             time.sleep(2)
+            fix = "stty sane"
+            curses.endwin()
+            os.system(fix)
             sys.exit()
         elif technic in ("1","2","3","4","5","6","7","8","9","10","11","12","13"):
             if technic == "1":
                 stechnic = "ping"
                 return technic, stechnic
             if technic == "2":
-                stechnic = "list"
+                stechnic = "tcp"
                 return technic, stechnic
             if technic == "3":
-                stechnic = "dns"
+                stechnic = "udp"
                 return technic, stechnic
             if technic == "4":
                 stechnic = "top"
                 return technic, stechnic
-            if technic == "5":
+            if technic == "6":
+                if User == "Normal User - limited scan":
+                    screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(5)
+                    #main()
+                    scanOption(ip, os_version, User)
                 stechnic = "fw"
                 return technic, stechnic
-            if technic == "6":
+            if technic == "7":
                 if os_version == "Windows":
-                    screen.addstr(26, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
-                    screen.addstr(27, 3, "Restart the programm...")
-                    time.sleep(4)
-                    main()
+                    screen.addstr(27, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(5)
+                    #main()
+                    scanOption(ip, os_version, User)
+                if User == "Normal User - limited scan":
+                    screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(5)
+                    #main()
+                    scanOption(ip, os_version, User)
                 stechnic = "os_version"
                 return technic, stechnic
-            if technic == "7":
+            if technic == "5":
                 stechnic = "ports"
                 return technic, stechnic
             if technic == "8":
                 if os_version == "Windows":
-                    screen.addstr(26, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
-                    screen.addstr(27, 3, "Restart the programm...")
+                    screen.addstr(27, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
                     time.sleep(4)
-                    main()
+                    #main()
+                    scanOption(ip, os_version, User)
+                if User == "Normal User - limited scan":
+                    screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(4)
+                    #main()
+                    scanOption(ip, os_version, User)
                 stechnic = "stealth"
                 return technic, stechnic
             if technic == "9":
+                if User == "Normal User - limited scan":
+                    screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(5)
+                    #main()
+                    scanOption(ip, os_version, User)
                 stechnic = "subnet"
                 return technic, stechnic
             if technic == "10":
+                if User == "Normal User - limited scan":
+                    screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(5)
+                    #main()
+                    scanOption(ip, os_version, User)
                 stechnic = "version"
                 return technic, stechnic
             if technic == "11":
                 utils_result = nmap3.utils.__version__
                 screen.attron(curses.color_pair(1))
-                screen.addstr(26, 3, f"python-nmap3 version is: {utils_result}")
+                screen.addstr(27, 3, f"python-nmap3 version is: {utils_result}")
                 screen.attroff(curses.color_pair(1))
-                time.sleep(6)
-                screen.addstr(27, 3, "Restart programm...")
+                time.sleep(4)
+                screen.addstr(28, 3, "Back to menu...")
                 time.sleep(2)
-                main()
+                #main()
+                scanOption(ip, os_version, User)
             if technic == "12":
                 utils_result = nmap3.utils.__author__
                 screen.attron(curses.color_pair(1))
-                screen.addstr(26, 3, f"python-nmap3 author is: {utils_result}")
+                screen.addstr(27, 3, f"python-nmap3 author is: {utils_result}")
                 screen.attroff(curses.color_pair(1))
-                time.sleep(6)
-                screen.addstr(27, 3, "Restart programm...")
+                time.sleep(4)
+                screen.addstr(28, 3, "Back to menu...")
                 time.sleep(2)
-                main()
+                #main()
+                scanOption(ip, os_version, User)
             if technic == "13":
                 utils_result = nmap3.utils.__last_modification__
                 screen.attron(curses.color_pair(1))
-                screen.addstr(26, 3, f"python-nmap3 was last modified on: {utils_result}")
+                screen.addstr(27, 3, f"python-nmap3 was last modified on: {utils_result}")
                 screen.attroff(curses.color_pair(1))
-                time.sleep(6)
-                screen.addstr(27, 3, "Restart programm...")
+                time.sleep(4)
+                screen.addstr(28, 3, "Back to menu...")
                 time.sleep(2)
-                main()
-
+                #main()
+                scanOption(ip, os_version, User)
 
         else:
-            screen.addstr(19, 8, f'Wrong Number {technic}')
+            screen.addstr(25, 8, f'Wrong Number {technic}')
             time.sleep(2)
 
 def scannen(technic,ip):
@@ -298,20 +343,20 @@ def scannen(technic,ip):
         return output, results
     elif technic == "2":
         screen.attron(curses.color_pair(3))
-        screen.addstr(6, 3, f'Scan-Technic: nmapscan.nmap_list_scan ({ip})')
+        screen.addstr(6, 3, f'Scan-Technic: nmapscan.nmap_tcp_scan ({ip})')
         screen.attroff(curses.color_pair(3))
         screen.addstr(8, 3, text2, curses.A_REVERSE)
-        results = nmap.nmap_list_scan(f'{ip}')
+        results = nmapscan.nmap_tcp_scan(f'{ip}')
         screen.addstr(10, 3, 'DONE!', curses.A_REVERSE)
         output = str(results)
         time.sleep(2)
         return output, results
     elif technic == "3":
         screen.attron(curses.color_pair(3))
-        screen.addstr(6, 3, f'Scan-Technic: nmap_dns_brute_script ({ip})')
+        screen.addstr(6, 3, f'Scan-Technic: nmapscan.nmap_udp_scan ({ip})')
         screen.attroff(curses.color_pair(3))
         screen.addstr(8, 3, text2, curses.A_REVERSE)
-        results = nmap.nmap_dns_brute_script(f'{ip}')
+        results = nmapscan.nmap_udp_scan(f'{ip}')
         screen.addstr(10, 3, 'DONE!', curses.A_REVERSE)
         output = str(results)
         time.sleep(2)
@@ -393,7 +438,7 @@ def ausgabe(output,results,stechnic,head):
     restart = ''
     outputformat = ''
     splitoutput = ''
-    
+
     q3 = "Which output file format would you like (or q and ENTER to quit):"
     q4 = "1. Text-Format ?"
     q5 = "2. Json-Format ?"
@@ -436,7 +481,8 @@ def ausgabe(output,results,stechnic,head):
                 screen.addstr(15, 3, 'Leaving the program...... ')
                 time.sleep(2)
                 curses.endwin()
-                sys.exit()
+                fix = "stty sane"
+                sys.exit(fix)
         else:
             screen.addstr(23, 38, f'Wrong Number {outputformat}')
 
@@ -466,6 +512,8 @@ def new_start(outputformat,stechnic,head):
                     screen.addstr(19, 3, f'{t} Seconds to quit. Good bye.', curses.A_REVERSE)
                     t -= 1
                     time.sleep(1)
+                fix = "stty sane"
+                os.system(fix)
                 cmd = f'''\033c\n
                 *********************************************************************************************
                 *** type >> more output-nmap-{outputformat}-{stechnic}-{head}-{datum}.txt << to see the results ***
@@ -478,20 +526,20 @@ def new_start(outputformat,stechnic,head):
         else:
             screen.addstr(19, 3, f'Wrong input {new_start}')
             time.sleep(2)
-                
+
 
 def main():
-    os_version,User,ScreenDel,cmd = whichOS_whichUser()
-    NmapOK=exist_NMAP(cmd)
-    fenster(os_version,NmapOK,User)
+    os_version, User, ScreenDel, cmd = whichOS_whichUser()
+    NmapOK = exist_NMAP(cmd)
+    fenster(os_version, NmapOK, User)
     ip, head = whichIP(ScreenDel)
-    fenster(os_version,NmapOK,User)
-    technic,stechnic=scanOption(ip,os_version)
-    fenster(os_version,NmapOK,User)
-    output,results = scannen(technic,ip)
-    fenster(os_version,NmapOK,User)
-    outputformat=ausgabe(output,results,stechnic,head)
-    new_start(outputformat,stechnic,head)
+    fenster(os_version, NmapOK, User)
+    technic, stechnic = scanOption(ip, os_version, User)
+    fenster(os_version, NmapOK, User)
+    output, results = scannen(technic, ip)
+    fenster(os_version, NmapOK, User)
+    outputformat = ausgabe(output, results, stechnic, head)
+    new_start(outputformat, stechnic, head)
 
 # Start Main Programm
 main()
