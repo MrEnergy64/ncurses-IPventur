@@ -74,3 +74,12 @@ Update v8 version:
 - changed some minor style issues
 
 Note: new features will be added son! stay tune.
+
+Update v1.1 version:
+
+added final version 1.1:
+
+- added screen size check and display actual screen size
+- re-org menu list and add/removed some scan techniqs
+- re-start within the menu window, and not the whole prog
+- some minor style changes
