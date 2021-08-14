@@ -193,7 +193,7 @@ def scanOption(ip, os_version, User):
         screen.attroff(curses.color_pair(1))
         screen.addstr(13, 3, " (6) nmap_detect_firewall (not for Windows 10)  \t(7) nmap_os_detection (not for Windows 10)")
         screen.addstr(14, 3, " (8) nmap_stealth_scan (not for Windows 10)")
-        screen.addstr(15, 3, " (9) nmap_subnet_scan (long scan) \t\t\t(10) nmap_version_detection")
+        screen.addstr(15, 3, " (9) nmap_subnet_scan (not for Windows 10) \t\t(10) nmap_version_detection")
         screen.attron(curses.color_pair(2))
         screen.attron(curses.color_pair(1))
         screen.addstr(17, 3, "some utils and infos:")
@@ -279,6 +279,12 @@ def scanOption(ip, os_version, User):
                 stechnic = "stealth"
                 return technic, stechnic
             if technic == "9":
+                if os_version == "Windows":
+                    screen.addstr(27, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
+                    screen.addstr(28, 3, "Please choice again...")
+                    time.sleep(4)
+                    #main()
+                    scanOption(ip, os_version, User)
                 if User == "Normal User - limited scan":
                     screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root user OS only!")
                     screen.addstr(28, 3, "Please choice again...")
