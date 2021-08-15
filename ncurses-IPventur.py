@@ -1,12 +1,12 @@
 # coding: utf-8
 #!/usr/bin/python3
-# IPventur-Python-1.1
+# IPventur-Python-1.2
 # recommend root rights, need nmap
-# updated: 10.08.2021 Norman Woeske
-# Version: 1.1
+# updated: 15.08.2021 Norman Woeske
+# Version: 1.2
 # for Windows needs pypiwin32, windows-curses, demjson, simplejson, python3-nmap
 # for Linux needs simplejson, demjson, python3-nmap,
-IPversion = "1.1"
+IPversion = "1.2"
 
 
 import curses
@@ -229,12 +229,11 @@ def scanOption(ip, os_version, User):
                 stechnic = "tcp"
                 return technic, stechnic
             if technic == "3":
-                if os_version == "Windows":
-                    screen.addstr(27, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
-                    screen.addstr(28, 3, "Please choice again...")
-                    time.sleep(5)
-                    #main()
-                    scanOption(ip, os_version, User)
+                #if os_version == "Windows":
+                #    screen.addstr(27, 3, "Sorry, you are using Windows OS, this nmap scan will work for Linux OS only!")
+                #    screen.addstr(28, 3, "Please choice again...")
+                #    time.sleep(5)
+                #    scanOption(ip, os_version, User)
                 stechnic = "udp"
                 return technic, stechnic
             if technic == "4":
@@ -489,9 +488,9 @@ def new_start(outputformat,stechnic,head,os_version):
             if new_start == "y" or new_start == "Y":
                 main()
             if new_start == "n" or new_start == "N":
-                t = 5
+                t = 3
                 while t > 0:
-                    screen.addstr(19, 3, f'{t} Seconds to quit. Good bye.', curses.A_REVERSE)
+                    screen.addstr(19, 3, f'{t} Seconds to see scan result. Good bye.', curses.A_REVERSE)
                     t -= 1
                     time.sleep(1)
                 if os_version == "Linux":
@@ -502,6 +501,8 @@ def new_start(outputformat,stechnic,head,os_version):
                 *** type >> more output-nmap-{outputformat}-{stechnic}-{head}-{datum}.txt << to see the results ***
                 *********************************************************************************************\n\n'''
                 curses.endwin()
+                os.system(f"more output-nmap-{outputformat}-{stechnic}-{head}-{datum}.txt")
+                time.sleep(2)
                 sys.exit(cmd)
             else:
                 screen.addstr(19, 3, f'Wrong input {new_start}')
