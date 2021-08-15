@@ -1,7 +1,7 @@
 # ncurses-IPventur.py
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v1.1 of ncurses-IPventur.py
+This is v1.2 of ncurses-IPventur.py
 
 Requirements:
 
@@ -10,12 +10,12 @@ Python 3.8 or higher
 -----------------------------------------------------------
 python3-nmap:
 
-$ git clone https://github.com/wangoloj/python3-nmap.git
+$ git clone https://github.com/nmmapper/python3-nmap.git
 
 $ pip3 install -r requirements.txt
 -----------------------------------------------------------
 
-ncurses-IPventur.py:
+additional requirements for ncurses-IPventur.py:
 
 for Windows:
 
@@ -39,7 +39,7 @@ Windows:
 https://nmap.org/download.html
 
 
-start program (best as root) with: "python ncurses-IPventur.py"
+start program (recommended as root) with: "python ncurses-IPventur.py"
 
 Note:
 goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
@@ -82,4 +82,10 @@ added final version 1.1:
 - added screen size check and display actual screen size
 - re-org menu list and add/removed some scan techniqs
 - re-start within the menu window, and not the whole prog
+- some minor style changes
+
+Update v1.2 version:
+
+- changed some scan techniques (udp scan has still an issue on Windows 10 machine, python3-nmap author is informed)
+- added result output when you leave the program
 - some minor style changes
