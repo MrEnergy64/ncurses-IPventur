@@ -1,7 +1,7 @@
 # ncurses-IPventur.py
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v1.2 of ncurses-IPventur.py
+This is v1.3 of ncurses-IPventur.py
 
 Requirements:
 
@@ -11,8 +11,12 @@ Python 3.8 or higher
 python3-nmap:
 
 $ git clone https://github.com/nmmapper/python3-nmap.git
+cd python3-nmap
+chmod a+x build.sh
+./build.sh
 
-$ pip3 install -r requirements.txt
+$ pip3 install -r requirements.txt and pip3 install -r requirements-dev.txt
+
 -----------------------------------------------------------
 
 additional requirements for ncurses-IPventur.py:
@@ -42,9 +46,9 @@ https://nmap.org/download.html
 start program (recommended as root) with: "python ncurses-IPventur.py"
 
 Note:
-goal of the program was to write an easy to use frontend for nmap. Any feedback welcome.
+goal for this program was to write an easy to use frontend for nmap. Any feedback welcome.
 
-Update v5 version:
+Update betav5 version:
 
 - added IP format check
 - added if nmap program exist
@@ -55,19 +59,19 @@ Update v5 version:
 Still missing:
 - ask after a complete scan for a new scan or leaving... (will be soon in v6)
 
-Update v6 version:
+Update betav6 version:
 
 - added terminal window size check of 34 x 111, otherwise program will not starts
 - added restart menu after a completed scan
 - some minor design changes
 
-Update v7 version:
+Update betav7 version:
 
 - resolved json format saving bug
 - added actual screen size, to windows size error message
 - minor design change
 
-Update v8 version:
+Update betav8 version:
 
 - added notes that some nmap scan options are not valid for Windows OS yet
 - added some new menu points
@@ -89,3 +93,10 @@ Update v1.2 version:
 - changed some scan techniques (udp scan has still an issue on Windows 10 machine, python3-nmap author is informed)
 - added result output when you leave the program
 - some minor style changes
+
+Update v1.3 version:
+
+- output files have new naming convention and correct file extension .json or .txt
+- changed scan menu, because udp scan needs admin/root rights, also contacted the python3-nmap author to resolve the udp scan under Windows 10
+- some minor style changes
+
