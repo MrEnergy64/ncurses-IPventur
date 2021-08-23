@@ -232,6 +232,8 @@ def scanOption(ip, os_version, User):
                     screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root/admin user only!")
                     screen.addstr(28, 3, "Please choice again...")
                     time.sleep(5)
+                    screen.clear()
+                    fenster(os_version,NmapOK,User)                                  
                     scanOption(ip, os_version, User)
                 stechnic = "udp"
                 return technic, stechnic
@@ -252,6 +254,8 @@ def scanOption(ip, os_version, User):
                     screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root/admin user only!")
                     screen.addstr(28, 3, "Please choice again...")
                     time.sleep(5)
+                    screen.clear()
+                    fenster(os_version,NmapOK,User)
                     scanOption(ip, os_version, User)
                 stechnic = "version"
                 return technic, stechnic
@@ -260,7 +264,8 @@ def scanOption(ip, os_version, User):
                     screen.addstr(27, 3, "Sorry, you are not a root user, this nmap scan will work for root/admin user only!")
                     screen.addstr(28, 3, "Please choice again...")
                     time.sleep(5)
-                    #main()
+                    screen.clear()
+                    fenster(os_version,NmapOK,User)
                     scanOption(ip, os_version, User)
                 stechnic = "arp"
                 return technic, stechnic
