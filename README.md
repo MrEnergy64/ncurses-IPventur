@@ -1,7 +1,7 @@
 # ncurses-IPventur.py
 IPventur nmap frontend for Python3 and curses with nmap3 module
 
-This is v1.3 of ncurses-IPventur.py
+This is v1.4 of ncurses-IPventur.py
 
 Requirements:
 
@@ -100,3 +100,7 @@ Update v1.3 version:
 - changed scan menu, because udp scan needs admin/root rights, also contacted the python3-nmap author to resolve the udp scan under Windows 10
 - some minor style changes
 
+Update 1.4 version:
+
+- add time to the outputfile and change output file naming convetion
+- change displaying date format to day-month-year
