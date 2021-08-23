@@ -18,7 +18,7 @@ chmod a+x build.sh
 
 ./build.sh
 
-$ pip3 install -r requirements.txt and pip3 install -r requirements-dev.txt
+$ pip3 install -r requirements.txt && pip3 install -r requirements-dev.txt
 
 -----------------------------------------------------------
 
