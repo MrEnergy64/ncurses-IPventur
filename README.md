@@ -11,8 +11,11 @@ Python 3.8 or higher
 python3-nmap:
 
 $ git clone https://github.com/nmmapper/python3-nmap.git
+
 cd python3-nmap
+
 chmod a+x build.sh
+
 ./build.sh
 
 $ pip3 install -r requirements.txt and pip3 install -r requirements-dev.txt
